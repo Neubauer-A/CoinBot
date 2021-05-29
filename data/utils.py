@@ -7,7 +7,7 @@ def unique_tweets(dir):
         tweet_set |= set(df['tweet'].values)
     return tweet_set
 
-def write_raw_set(filename, max_lines):
+def write_raw_set(tweet_set, filename, max_lines):
     count = 0
     f = open(f'{filename}_{count}.py', 'w')
     f.write('d = {\n')
