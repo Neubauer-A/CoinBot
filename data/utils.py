@@ -1,5 +1,13 @@
 import os
 
+def is_ascii(s):
+    try:
+        s.encode(encoding='utf-8').decode('ascii')
+    except UnicodeDecodeError:
+        return False
+    else:
+        return True
+
 def unique_tweets(dir):
     tweet_set = set()
     for i in os.listdir(dir):
