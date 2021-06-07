@@ -1,3 +1,4 @@
+import numpy as np
 import tensorflow as tf
 from tf_agents.trajectories import TimeStep, Trajectory
 from tf_agents.specs import BoundedTensorSpec, BoundedArraySpec, TensorSpec
