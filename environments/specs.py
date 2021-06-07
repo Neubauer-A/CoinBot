@@ -14,8 +14,8 @@ ts_spec = TimeStep(
                   'submodel_4_obs': TensorSpec(shape=(1, 100, 5, 1), dtype='float32'),
                   'submodel_5_obs': TensorSpec(shape=(1, 100, 3, 1), dtype='float32'),
                   'submodel_6_obs': TensorSpec(shape=(1, 1), dtype='float32'),
-                  'submodel_7_obs': TensorSpec(shape=(1, 1), dtype='float32')},
-    )
+                  'submodel_7_obs': TensorSpec(shape=(1, 1), dtype='float32')
+    })
 
 act_spec = BoundedTensorSpec(shape=(1,), dtype=tf.int32, name='action', minimum=np.array(0, dtype='int32'), maximum=np.array(1, dtype='int32'))
 
