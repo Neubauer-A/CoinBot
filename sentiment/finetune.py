@@ -52,17 +52,17 @@ def finetune(model, x_train, y_train, x_test, y_test, epochs, batch_size):
                   loss='categorical_crossentropy',
                   metrics='accuracy')
     model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, 
-              shuffle=True, validation_data=(x_test, y_test))
+              shuffle=True, validation_data=(x_test, y_test), verbose=0)
     
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--train-path', type=str, default='data/datasets/combined_train.csv')
-    parser.add_argument('--test-path', type=str, default='data/datasets/combined_valid.csv')
+    parser.add_argument('--train-path', type=str, default='CoinBot/data/datasets/combined_train.csv')
+    parser.add_argument('--test-path', type=str, default='CoinBot/data/datasets/combined_valid.csv')
     parser.add_argument('--features', type=str, default='text')
     parser.add_argument('--labels', type=str, default='label')
     parser.add_argument('--epochs', type=int, default=4)
     parser.add_argument('--batch-size', type=int, default=32)
-    parser.add_argument('--save-path', type=str, default='sentiment/btcBERT')
+    parser.add_argument('--save-path', type=str, default='CoinBot/sentiment/btcBERT')
     args = parser.parse_args()
 
     model = build_classifier_model()
