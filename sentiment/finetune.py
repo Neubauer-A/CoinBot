@@ -1,3 +1,5 @@
+#!/usr/local/bin/python
+
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import argparse
@@ -54,13 +56,13 @@ def finetune(model, x_train, y_train, x_test, y_test, epochs, batch_size):
     
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--train-path', type=str, required=True)
-    parser.add_argument('--test-path', type=str, required=True)
+    parser.add_argument('--train-path', type=str, default='data/datasets/combined_train.csv')
+    parser.add_argument('--test-path', type=str, default='data/datasets/combined_valid.csv')
     parser.add_argument('--features', type=str, default='text')
     parser.add_argument('--labels', type=str, default='label')
-    parser.add_argument('--epochs', type=int, default=5)
+    parser.add_argument('--epochs', type=int, default=4)
     parser.add_argument('--batch-size', type=int, default=32)
-    parser.add_argument('--save-path', type=str, required=True)
+    parser.add_argument('--save-path', type=str, default='sentiment/btcBERT')
     args = parser.parse_args()
 
     model = build_classifier_model()
