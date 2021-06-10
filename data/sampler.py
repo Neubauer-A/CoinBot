@@ -74,7 +74,10 @@ class DataSampler:
         arrays.append(sentiment)
         return arrays
 
-    def save_samples(self, num_samples, verbose=0):
+    def save_samples(self, num_samples, 
+                     save_path='CoinBot/data/datasets/rl_samples', 
+                     verbose=0):
+        # get all the samples we want (unless peer resets connection)             
         samples = []
         for i in range(num_samples):
             try:
@@ -84,12 +87,12 @@ class DataSampler:
                     print(f'{i}/{num_samples}')
             except:
                 break
-
+        # sort the arrays
         arrays = []
         for i in range(len(samples[0])):
             arr = np.array([j[i] for j in samples])
             arrays.append(arr)
-      
+        # save the arrays
         name = datetime.now().strftime("%m%d%y_%H%M")
         np.savez_compressed(name+'.npz', \
             arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5])
