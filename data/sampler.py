@@ -75,7 +75,7 @@ class DataSampler:
         return arrays
 
     def save_samples(self, num_samples, 
-                     save_path='CoinBot/data/datasets/rl_samples', 
+                     save_prefix='CoinBot/data/datasets/rl_samples', 
                      verbose=0):
         # get all the samples we want (unless peer resets connection)             
         samples = []
@@ -94,5 +94,5 @@ class DataSampler:
             arrays.append(arr)
         # save the arrays
         name = datetime.now().strftime("%m%d%y_%H%M")
-        np.savez_compressed(name+'.npz', 
+        np.savez_compressed(save_prefix+'/'+name+'.npz', 
             arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5])
