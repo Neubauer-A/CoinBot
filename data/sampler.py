@@ -94,5 +94,5 @@ class DataSampler:
             arrays.append(arr)
         # save the arrays
         name = datetime.now().strftime("%m%d%y_%H%M")
-        np.savez_compressed(name+'.npz', \
+        np.savez_compressed(name+'.npz', 
             arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5])
