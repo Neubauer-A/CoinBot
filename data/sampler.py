@@ -84,7 +84,7 @@ class DataSampler:
                 sample = self.get_sample()
                 samples.append(sample)
                 if verbose:
-                    print(f'{i}/{num_samples}')
+                    print(f'{i+1}/{num_samples}')
             except:
                 break
         # sort the arrays
