@@ -56,8 +56,8 @@ def finetune(model, x_train, y_train, x_test, y_test, epochs, batch_size):
     
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--train-path', type=str, default='CoinBot/data/datasets/combined_train.csv')
-    parser.add_argument('--test-path', type=str, default='CoinBot/data/datasets/combined_valid.csv')
+    parser.add_argument('--train-path', type=str, default='CoinBot/data/datasets/sentiment/combined_train.csv')
+    parser.add_argument('--test-path', type=str, default='CoinBot/data/datasets/sentiment/combined_valid.csv')
     parser.add_argument('--features', type=str, default='text')
     parser.add_argument('--labels', type=str, default='label')
     parser.add_argument('--epochs', type=int, default=4)
