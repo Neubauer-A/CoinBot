@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow_text
 from time import sleep
+from datetime import datetime
 from multiprocessing import Pool
 from tensorflow.keras.models import load_model
 from CoinBot.data.scraper import TwitterScraper
@@ -39,8 +40,8 @@ class DataSampler:
         pool.join()
         # check if the data has been successfully retrieved
         try:
-            if results[0][0]['result'] and results[0][1]['result'] and \
-                results[0][2]['result'] and results[0][3]['result']:
+            if results[0][0]['result']['XXBTZUSD'] and results[0][1]['result']['XXBTZUSD'] and \
+                results[0][2]['result']['XXBTZUSD'] and results[0][3]['result']['XXBTZUSD']:
                 return results
         # cool down if number of requests exceed Kraken's limits
         except:
@@ -72,3 +73,23 @@ class DataSampler:
         arrays = self.data_arrays(data)
         arrays.append(sentiment)
         return arrays
+
+    def save_samples(self, num_samples, verbose=0):
+        samples = []
+        for i in range(num_samples):
+            try:
+                sample = self.get_sample()
+                samples.append(sample)
+                if verbose:
+                    print(f'{i}/{num_samples}')
+            except:
+                break
+
+        arrays = []
+        for i in range(len(samples[0])):
+            arr = np.array([j[i] for j in samples])
+            arrays.append(arr)
+      
+        name = datetime.now().strftime("%m%d%y_%H%M")
+        np.savez_compressed(name+'.npz', \
+            arrays[0], arrays[1], arrays[2], arrays[3], arrays[4], arrays[5])
